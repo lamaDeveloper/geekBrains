@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My SHOP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="logo">SHOP</div>
+        <div class="cart">
+            <form action="#" class="search-form">
+                <input type="text" class="search-field" v-model="searchLine" placeholder="search...">
+                <button class="btn-search" type="submit" @click="filterGoods(searchLine)">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button class="cart-button" type="button">Корзина</button>
+        </div>
+    </header>
+    <section>
+        <div class="products goods-list">
+            <div class=" product-item" v-for="product of products" :key="product.id_product">
+                <img :src="imgCatalog" alt="Some img">
+                <h3>{{product.product_name}}</h3>
+                <p>Цена: {{product.price}} ₽</p>
+                <button class="buy-btn" @click="addProduct(product)">Купить</button>
+            </div>
+        </div>
+    </section>
+    <section>
+      <div class="title_page"><h1>Корзина</h1></div> 
+      
+      <div class="products goods-list" v-if="show">
+        <div class=" product-item" v-for="product of products" :key="product.id_product">
+            <img :src="imgCatalog" alt="Some img">
+            <h3>{{product.product_name}}</h3>
+            <p>Цена: {{product.price}} ₽</p>
+            <button class="buy-btn" @click="addProduct(product)">Купить</button>
+        </div>
+    </div>
+    <div class="products goods-list" v-else>Нет данных</div>
+    </section>
+</div>
+
+<footer>
+    <p><script>document.write(new Date().getFullYear());</script> &copy;All rights reserved!</p>
+</footer>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
